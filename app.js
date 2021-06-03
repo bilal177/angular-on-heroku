@@ -3,7 +3,7 @@ const express = require("express");
 const app = express();
 const userRouter = require("./api/users/user.router")
 
-if (process.env.NODE_ENV === "production"{
+if (process.env.NODE_ENV === "production"){
   app.use(express.static("build"));
   app.get("*", (req, res) => {
     res.sendFile(path.resolve("/src/",  "build", "index.html"));
