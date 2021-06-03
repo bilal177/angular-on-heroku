@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const userRouter = require("./api/users/user.router")
+const path = require('path');
 
 app.use(express.json());
 app.use(express.static(__dirname + '/dist/dalstock'));
