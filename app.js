@@ -3,14 +3,8 @@ const express = require("express");
 const app = express();
 const userRouter = require("./api/users/user.router")
 
-if (process.env.NODE_ENV === "production"){
-  app.use(express.static("build"));
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve("/src/",  "build", "index.html"));
-  });
-}else{
-  app.use(express.json());
-}
+var distDir = __dirname + "/dist/";
+app.use(express.static(distDir));
 
 app.use("/api/users", userRouter);
 
