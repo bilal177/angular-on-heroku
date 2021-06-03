@@ -8,6 +8,7 @@ app.use(express.static(distDir));
 
 app.use("/api/users", userRouter);
 app.get('/', (req, res) => {
+  console.log(__dirname);
   res.sendFile(path.join(__dirname+'/dist/src/index.html'));
 });
 
