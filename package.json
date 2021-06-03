@@ -8,7 +8,8 @@
     "client": "ng serve --proxy-config server.conf.json",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "heroku-postbuild": "npm-run-all -p client server"
   },
   "private": true,
   "dependencies": {
