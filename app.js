@@ -6,7 +6,7 @@ const path = require('path');
 
 app.use(express.json());
 app.use(express.static(__dirname + '/dist/dalstock'));
-app.use("/api/users", userRouter);
+
 app.get('/', function(req, res){
   res.sendFile(path.join(__dirname + '/dist/dalstock/index.html'));
 });
