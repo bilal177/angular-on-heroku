@@ -5,7 +5,7 @@
     "ng": "ng",
     "start": "npm-run-all -p client server ",
     "server": "nodemon app.js",
-    "client": "ng serve --ssl --proxy-config server.conf.json",
+    "client": "ng serve --ssl --proxy -config server.conf.json",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
