@@ -7,7 +7,7 @@ app.use(express.json());
 app.use(express.static(__dirname + '/dist/Dalstock'));
 app.use("/api/users", userRouter);
 app.get('/*', function(req, res){
-  res.sendFile(path.join(__dirname,'src', 'index.html'));
+  res.sendFile(path.join(__dirname + '/dist/Dalstock/index.html'));
 });
 
 
