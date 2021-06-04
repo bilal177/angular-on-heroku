@@ -1,6 +1,6 @@
 {
   "/api": {
-    "target": "http://localhost:2000",
+    "target": "https://dalstock-angular.herokuapp.com",
     "secure": false
   }
 }
