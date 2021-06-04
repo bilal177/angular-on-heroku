@@ -18,7 +18,9 @@ const options = {
   cert: fs.readFileSync('ssl/server.crt')
 };
 
+// const httpsServer = https.createServer(options, app);
+// httpsServer.listen(process.env.PORT || 4000);
 
-const httpsServer = https.createServer(options, app);
-
-httpsServer.listen(process.env.PORT || 4000);
+app.listen(process.env.PORT || process.env.APP_PORT,() => {
+  console.log("server up and running on port : ", process.env.PORT || process.env.APP_PORT);
+});
