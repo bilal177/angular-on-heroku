@@ -21,4 +21,4 @@ const options = {
 
 const httpsServer = https.createServer(options, app);
 
-httpsServer.listen(4000);
+httpsServer.listen(process.env.PORT || 4000);
