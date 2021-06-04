@@ -31,7 +31,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": []
           },
@@ -78,6 +79,11 @@
               "browserTarget": "Dalstock:build:development"
             }
           },
+          "options": {
+            "sslKey": "ssl/key.pem",
+            "sslCert": "ssl/server.crt",
+            "ssl": true
+        },
           "defaultConfiguration": "development"
         },
         "extract-i18n": {

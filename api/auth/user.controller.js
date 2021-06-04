@@ -1,5 +1,5 @@
 const {create, getUserById, getUsers, updateUser, deleteUser, getUserByEmail} = require("./user.service");
-const {hashSync, genSaltSync, compare} = require("bcrypt");
+const {compare, genSaltSync,hashSync} = require("bcrypt");
 const {sign} = require("jsonwebtoken");
 const { env } = require("process");
 
@@ -106,27 +106,35 @@ module.exports = {
       if (!results){
         return res.json({
           success: 0,
-          data: "Invalid email or password."
+          message: "Invalid email or password."
         });
       }
-      const result = compare(data.password, results.password);
-      if (result)
+      compare(data.password, results.password, function(err, result){
+        console.log(result);
+        if (result)
       {
         results.password = undefined;
-        const jsontoken = sign({result: results},process.env.JSON_TOKEN_KEY,{
+        const jsonToken = sign({result: results},process.env.JSON_TOKEN_KEY,{
         expiresIn: "2h"
+      });
+      const jsonRefreshToken = sign({result: results},process.env.JSON_TOKEN_KEY,{
+        expiresIn: "24h"
       });
       return res.json({
         success: 1,
         message: "Login sucessfull.",
-        token: jsontoken
+        token: jsonToken,
+        refreshToken: jsonRefreshToken
       });
       } else {
         return res.json({
           success: 0,
-          data: "Invalid email or password."
+          message: "Invalid email or password."
         })
       }
+      });
+
+
     });
   }
 }
