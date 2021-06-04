@@ -10,13 +10,13 @@ app.use(express.static(__dirname + '/dist/Dalstock'));
 app.get('/*', function(req, res){
   res.sendFile(path.join(__dirname + '/dist/Dalstock/index.html'));
 });
-const https = require('https');
-const fs = require('fs');
+// const https = require('https');
+// const fs = require('fs');
 
-const options = {
-  key: fs.readFileSync('ssl/key.pem'),
-  cert: fs.readFileSync('ssl/server.crt')
-};
+// const options = {
+//   key: fs.readFileSync('ssl/key.pem'),
+//   cert: fs.readFileSync('ssl/server.crt')
+// };
 
 // const httpsServer = https.createServer(options, app);
 // httpsServer.listen(process.env.PORT || 4000);
