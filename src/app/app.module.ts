@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './authentication/login.component'
 import { from } from 'rxjs';
 import { HomeComponent } from './home/home.component';
+import { RouterModule } from '@angular/router';
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,7 +18,12 @@ import { HomeComponent } from './home/home.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule.forRoot([
+
+      { path: '/', component: AppComponent }
+
+    ]),
   ],
   exports:[ReactiveFormsModule],
   providers: [],
