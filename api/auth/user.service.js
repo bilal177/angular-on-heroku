@@ -13,6 +13,7 @@ module.exports = {
                   data.number
                 ],
                 (error, results, fields) => {
+                  console.log(results + " - " + error);
                   if (error){
                     callback(error);
                   }
