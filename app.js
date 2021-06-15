@@ -1,11 +1,14 @@
 require("dotenv").config();
 const express = require("express");
 const app = express();
-const userRouter = require("./api/auth/user.router")
+const userRouter = require("./api/auth/user.router");
 const path = require('path');
+var cors = require('cors')
+
+app.use(cors());
 app.use(express.json());
 app.use(express.static(__dirname + '/dist/Dalstock'));
-app.use("/api/auth", userRouter);
+app.use("/api/users", userRouter);
 app.get('/*', function(req, res){
   res.sendFile(path.join(__dirname + '/dist/Dalstock/index.html'));
 });

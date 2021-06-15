@@ -23,6 +23,7 @@ module.exports = {
       });
     })
   },
+
   getUserById: (req, res) => {
     const id = req.params.id;
     getUserById(id, (err, results) => {
@@ -114,17 +115,18 @@ module.exports = {
         if (result)
       {
         results.password = undefined;
-        const jsonToken = sign({result: results},process.env.JSON_TOKEN_KEY,{
+        const accessToken = sign({result: results},process.env.JSON_TOKEN_KEY,{
         expiresIn: "2h"
       });
-      const jsonRefreshToken = sign({result: results},process.env.JSON_TOKEN_KEY,{
+      const refreshToken = sign({result: results},process.env.JSON_TOKEN_KEY,{
         expiresIn: "24h"
       });
       return res.json({
         success: 1,
         message: "Login sucessfull.",
-        token: jsonToken,
-        refreshToken: jsonRefreshToken
+        accessToken: accessToken,
+        refreshToken: refreshToken,
+        expiresIn: accessToken.expiresIn
       });
       } else {
         return res.json({
@@ -135,6 +137,27 @@ module.exports = {
       });
 
 
+    });
+  },
+  getUserByEmail: (req, res) => {
+    const email = req.body.email;
+    getUserByEmail(email, (err, results) => {
+      if(err){
+        console.log(err);
+        return;
+      }
+      if (!results)
+      {
+        console.log(results);
+        return res.json({
+          success: 0,
+          message: "Record not found."
+        });
+      }
+      return res.json({
+        success: 1,
+        data: results
+      });
     });
   }
 }

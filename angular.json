@@ -82,7 +82,7 @@
           "options": {
             "sslKey": "ssl/key.pem",
             "sslCert": "ssl/server.crt",
-            "ssl": true
+            "ssl": false
         },
           "defaultConfiguration": "development"
         },
